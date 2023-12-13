@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.105/Build/Cesium/Cesium.js"></script>
+    <link
+      href="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.105/Build/Cesium/Widgets/widgets.css"
+      rel="stylesheet"
+    />
+    <title>3D Neighborhood Discovery</title>
+  </head>
+  <body>
+    <main class="main-container">
+      <!-- This section contains a cesium container for displaying 3D map tiles  -->
+      <!-- JavaScript is used to manipulate the HTML elements, add event listeners,
+        and perform other actions to make the cesium globe interactive and dynamic. -->
+      <div id="cesium-container">
+        <div class="custom-overlay overlay-is-hidden">
+          <div class="zoom-control">
+            <button
+              class="zoom-control-button zoom-in-button"
+              aria-label="Zoom in"
+            >
+              <img src="assets/icons/zoom-control-plus-icon.svg" alt="" />
+            </button>
+            <button
+              class="zoom-control-button zoom-reset-button"
+              aria-label="Reset zoom"
+            >
+              <img src="assets/icons/zoom-control-reset-icon.svg" alt="" />
+            </button>
+            <button
+              class="zoom-control-button zoom-out-button"
+              aria-label="Zoom out"
+            >
+              <img src="assets/icons/zoom-control-minus-icon.svg" alt="" />
+            </button>
+          </div>
+          <div class="auto-orbit-control">
+            <label class="switch" for="toggle-switch"
+              ><div class="input-wrapper">
+                <input type="checkbox" id="toggle-switch" /><span
+                  class="slider"
+                ></span></div
+            ></label>
+            <p>Auto Orbit</p>
+          </div>
+        </div>
+        <div class="cesium-attribution-container">
+          rendered with
+          <a
+            class="cesium-logo__link"
+            href="https://cesium.com/"
+            target="_blank"
+            ><img
+              class="cesium-logo__image"
+              src="assets/cesium-js.png"
+              alt="CesiumJS Logo"
+          /></a>
+        </div>
+      </div>
+
+      <!-- The sidebar is used to show information regarding the place details.
+      To toggle it, the sidebar-is-open class is added and removed on the main-container -->
+      <aside id="sidebar">
+        <div class="sidebar-content-wrapper">
+          <div class="place-image-container">
+            <button class="sidebar-close-button" aria-label="Close Sidebar">
+              <img src="assets/icons/sidebar/close-icon.svg" alt="Close" />
+            </button>
+            <img class="place-image" />
+          </div>
+          <header class="intro section-container">
+            <div class="title-container">
+              <h2 class="place-name with-loading-skeleton"></h2>
+            </div>
+            <div class="rating-overview">
+              <div class="rating-overview-number with-loading-skeleton"></div>
+              <div class="rating-overview-stars"></div>
+              <div class="rating-overview-total"></div>
+            </div>
+            <div class="place-type with-loading-skeleton"></div>
+          </header>
+          <div class="place-overview section-container">
+            <div class="address">
+              <img
+                src="assets/icons/sidebar/address-icon.svg"
+                alt="address-icon"
+              />
+              <p class="with-loading-skeleton"></p>
+            </div>
+            <div class="website">
+              <img
+                src="assets/icons/sidebar/website-icon.svg"
+                alt="website-icon"
+              />
+              <a class="with-loading-skeleton"></a>
+            </div>
+            <div class="phone">
+              <img src="assets/icons/sidebar/phone-icon.svg" alt="phone-icon" />
+              <p class="with-loading-skeleton"></p>
+            </div>
+            <div class="opening-hours">
+              <img
+                src="assets/icons/sidebar/opening-hours-icon.svg"
+                alt="opening-hours-icon"
+              />
+              <details>
+                <summary
+                  class="opening-hours-summary with-loading-skeleton"
+                ></summary>
+                <div class="opening-hours-details" />
+              </details>
+            </div>
+          </div>
+          <div class="reviews-section section-container">
+            <h3>Reviews by Google Users</h3>
+            <span class="sorting">Most Relevant</span>
+            <div class="reviews">
+              <div class="reviews-scroll-container"></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+    <!-- Central script to load all javascript files
+    to initialize google maps, cesium viewer and dynamically create UI Elements -->
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

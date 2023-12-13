@@ -1,0 +1,286 @@
+#sidebar {
+  grid-area: sidebar;
+}
+
+#sidebar .sidebar-content-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: var(--sidebar-width);
+  height: 100%;
+}
+
+.place-image-container {
+  --close-button-size: 1.5rem;
+  position: relative;
+  display: grid;
+  height: 200px;
+  flex-shrink: 0;
+  grid-template-rows: var(--spacing-medium) var(--close-button-size) 1fr;
+  grid-template-columns: 1fr var(--close-button-size) var(--spacing-medium);
+  background-color: var(--background-color-loading-skeleton);
+}
+
+.place-image-container .place-image {
+  grid-area: 1 / 1 / 4 / 4;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.place-image-container::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* Ensure better visibility for closing button */
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 17.25%,
+    rgba(0, 0, 0, 0) 40.25%
+  );
+  pointer-events: none;
+}
+
+.place-image-container .sidebar-close-button {
+  all: unset;
+  z-index: 1;
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+/* TODO: Implement hover state for closing button */
+.place-image-container .sidebar-close-button:hover {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.section-container {
+  margin-inline: var(--spacing-medium-large);
+  margin-top: var(--spacing-medium);
+}
+
+.section-container:last-child {
+  padding-bottom: 0;
+  border: none;
+}
+
+.intro {
+  color: var(--text-color-secondary);
+}
+
+.title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.place-name {
+  margin-bottom: 0.25rem;
+}
+
+.review-container {
+  display: flex;
+  height: 100%;
+}
+
+.rating-overview {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-extra-small);
+  color: var(--text-color-secondary);
+}
+
+.rating-overview-stars {
+  display: inline-flex;
+  align-items: center;
+}
+
+.place-overview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-medium);
+  padding-bottom: var(--spacing-medium);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.place-overview.section-container > div {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.place-overview,
+.place-overview p,
+.place-overview a {
+  color: var(--text-color-heading);
+  line-height: 1.5rem;
+}
+
+.address p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.website a {
+  font-size: inherit;
+  text-decoration: none;
+}
+
+.website a:hover,
+.website a:focus-visible {
+  text-decoration: underline;
+}
+
+.opening-hours-summary {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.opening-hours-summary:focus-visible {
+  outline: var(--accent-color) auto 1px;
+}
+
+.opening-hours-summary::-webkit-details-marker {
+  display: none;
+}
+
+.opening-hours-summary::after {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: var(--spacing-extra-small);
+  /* expand icon */
+  content: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 15.4001L6 9.40012L7.18333 8.2168L12 13.0335L16.8167 8.2168L18 9.40012L12 15.4001Z' fill='%235F6368'/%3E%3C/svg%3E");
+}
+
+.opening-hours > details[open] > .opening-hours-summary::after {
+  /* collapse icon */
+  content: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 10.3667L7.18333 15.1833L6 14L12 8L18 14L16.8167 15.1833L12 10.3667Z' fill='%235F6368'/%3E%3C/svg%3E");
+}
+
+.opening-hours-summary:empty::after {
+  content: "";
+}
+
+.opening-hours-summary .time {
+  color: var(--text-color-secondary);
+}
+
+.opening-hours .today {
+  font-weight: 500;
+}
+
+.opening-hours > details:not([open]) .open::after {
+  content: "·";
+  margin: 0 var(--spacing-small);
+  color: var(--text-color-secondary);
+}
+
+.opening-hours > details[open] .open + span {
+  display: none;
+}
+
+.opening-hours .open {
+  color: #188038;
+}
+
+.opening-hours .closed {
+  color: #d93025;
+}
+
+.opening-hours-details {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--spacing-small) var(--spacing-medium);
+  margin-top: var(--spacing-small);
+}
+
+.reviews-section {
+  display: grid;
+  overflow: hidden;
+}
+
+.reviews {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+}
+
+.no-reviews {
+  height: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reviews-scroll-container {
+  overflow: auto;
+}
+
+.reviews-scroll-container::before,
+.reviews-scroll-container::after {
+  --shadow-size: var(--spacing-medium);
+  --shadow-color: var(--background-color);
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: var(--spacing-medium);
+}
+
+.reviews-scroll-container:before {
+  top: 0;
+  box-shadow: inset 0 var(--shadow-size) calc(var(--shadow-size) * 0.5)
+    calc(var(--shadow-size) * -0.5) var(--shadow-color);
+}
+
+.reviews-scroll-container:after {
+  bottom: 0;
+  box-shadow: inset 0 calc(var(--shadow-size) * -1)
+    calc(var(--shadow-size) * 0.5) calc(var(--shadow-size) * -0.5)
+    var(--shadow-color);
+}
+
+.reviews-section .sorting {
+  color: var(--text-color-secondary);
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  padding-block: var(--spacing-medium);
+  border-bottom: 1px solid var(--border-color);
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.review:last-child {
+  border-bottom: none;
+}
+
+.review .username {
+  color: var(--text-color-heading);
+}
+
+.review .rating-info-container {
+  display: flex;
+  gap: var(--spacing-small);
+  margin-bottom: 0.25rem;
+  color: var(--text-color-secondary);
+}
+
+/* ---- sidebar loading skeleton ---- */
+.place-name.with-loading-skeleton:empty::before {
+  width: 13rem;
+}
+.rating-overview-number.with-loading-skeleton:empty::before {
+  width: 10rem;
+}
+.place-type.with-loading-skeleton:empty::before {
+  width: 8rem;
+}
+.place-overview .with-loading-skeleton:empty::before {
+  width: 18rem;
+}

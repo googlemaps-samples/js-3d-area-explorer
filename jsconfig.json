@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "commonjs",
+    "allowJs": true,
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "typeRoots": ["/types"]
+  },
+  "include": ["./**/*"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,40 @@
+.custom-overlay .zoom-control {
+  --zoom-control-start: calc(
+    var(--spacing-medium) + var(--spacing-extra-small)
+  );
+  position: absolute;
+  bottom: calc(var(--zoom-control-start) + var(--spacing-large));
+  right: var(--spacing-medium);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-overlay .zoom-control .zoom-control-button {
+  background-color: var(--background-color-reduced);
+  height: 40px;
+  padding: var(--spacing-small);
+  border: 1px solid var(--border-color-controls);
+}
+
+.custom-overlay .zoom-control .zoom-control-button:hover {
+  background-color: var(--background-color-reduced-hover);
+}
+
+.custom-overlay .zoom-control .zoom-in-button {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  border-bottom: none;
+}
+
+.custom-overlay .zoom-control .zoom-reset-button {
+  border-radius: 0;
+}
+
+.custom-overlay .zoom-control .zoom-out-button {
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  border-top: none;
+}
+
+.custom-overlay .zoom-control-button > img {
+  opacity: 1;
+}
