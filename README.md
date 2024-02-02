@@ -5,9 +5,9 @@
 
 ## Overview
 
-This project aims to create an Area Explorer sample app that showcases the new 3D tiles Solution by Google Maps. The demo will be featured at the Architecture Center, allowing users to explore neighbourhoods in 3D and learn about points of interests via digital storytelling.
+This project aims to create an 3D Area Explorer sample app that showcases the new Photorealistic 3D tiles solution by Google Maps Platform. The demo will be featured at the Architecture Center, allowing users to explore neighbourhoods in 3D and learn about points of interests via digital storytelling.
 
-This repository consists of two parts. The actual app, 3D Area Explorer, and a demo app which adds a control panel for settings.
+This repository consists of two parts. The demo app, 3D Area Explorer, and an Admin app which adds a control panel for settings.
 
 ## Installation
 

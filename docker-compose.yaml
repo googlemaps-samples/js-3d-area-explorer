@@ -5,7 +5,7 @@ services:
       context: ./
       dockerfile: ./demo/Dockerfile
       args:
-        - API_KEY=AIzaSyC2GCU5Yz2OREtYRD6nBgItCoRdYgxwWpI
+        - API_KEY=
 
     ports:
       - "5500:8080"
@@ -15,7 +15,7 @@ services:
       context: ./
       dockerfile: ./Dockerfile
       args:
-        - API_KEY=AIzaSyC2GCU5Yz2OREtYRD6nBgItCoRdYgxwWpI
+        - API_KEY=
 
     ports:
       - "5500:8080"
