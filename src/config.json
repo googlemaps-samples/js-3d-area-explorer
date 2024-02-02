@@ -1,8 +1,6 @@
-
-
 {
   "location": {
-    "coordinates": { "lat": null, "lng": null }
+    "coordinates": { "lat": 40.74244, "lng": -74.006144 }
   },
   "poi": {
     "density": 30,
