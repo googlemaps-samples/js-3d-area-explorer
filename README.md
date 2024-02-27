@@ -5,23 +5,23 @@
 
 ## Overview
 
-This project aims to create an 3D Area Explorer sample app that showcases the new Photorealistic 3D tiles solution by Google Maps Platform. The demo will be featured at the Architecture Center, allowing users to explore neighbourhoods in 3D and learn about points of interests via digital storytelling.
+This is the sample app for 3D Area Explorer solution.  This solution leverages the capabilities of Google Maps Platform Photorealistic 3D Tiles and the Places API to create captivating, interactive 3D environments.
 
-This repository consists of two parts. The demo app, 3D Area Explorer, and an Admin app which adds a control panel for settings.
+This repository consists of two parts. The demo ap and an Admin app which adds a control panel for settings.
 
 ## Installation
 
-You need to create a [Google API Key](https://console.cloud.google.com/apis/credentials) and restrict it to at least these there APIs.
+You need to create a Google API Key and restrict it to at least these APIs.
 
-- Map Tiles API
-- Maps JavaScript API
-- Places API
+- [Map Tiles API](https://console.cloud.google.com/marketplace/product/google/tile.googleapis.com?utm_source=3d_solutions_storytelling)
+- Maps JavaScript API 
+- [Places API](https://console.cloud.google.com/marketplace/product/google/places-backend.googleapis.com?utm_source=3d_solutions_storytelling)
 
 Also, it is always a good idea to add restrictions for specific websites (i.e. `localhost:5500` for local development).
 
-### Neighbourhood Discovery
+### 3D Area Explorer
 
-There are no external dependencies to view and work with the Neighbourhood Discovery Tool.
+There are no external dependencies to view and work with the 3D Area Explorer solution.
 
 1. download the content of the `src` folder
 2. adjust the `config.json` to your needs (see [Configuration](#Configuration))
@@ -69,7 +69,7 @@ Here are some highlights:
   - **pitch**: refers to the tilt of the camera (negative to look down)
   - **range**: refers to the distance from the point the camera is looking at
 
-## Local Development
+## Local development
 
 For the local development you still need the API key for 3D Map Tiles and Google Places/Maps requests.
 
@@ -85,7 +85,7 @@ There is a second docker compose service `docker-compose up app` which only serv
 
 ### NodeJS server
 
-You can always use your own local webserver to show the Neighbourhood Discovery app like so:
+You can always use your own local webserver to show the 3D Area Explorer app like this:
 
 `npx http-server -p 5500 ./src`
 
@@ -95,7 +95,7 @@ Most IDEs include some kind of server for static files. Just point it to the `./
 
 ## Deployment
 
-To deploy the neighbourhood discovery you need to upload everything in the `src` folder to a static webserver or some other hosting service. A static webserver is enough. You need a domain for you webspace, though. Since the Google Maps API key is only restricted on a domain you would risk missuse of the key.
+To deploy the app you need to upload everything in the `src` folder to a static webserver or some other hosting service. A static webserver is enough. You need a domain for you webspace, though. Since the Google Maps API key is only restricted on a domain you would risk missuse of the key.
 
 Included in the repository is a `Dockerfile` which can be used to build a docker image. This can be used to deploy with Google Cloud Run or other container cloud services.
 
