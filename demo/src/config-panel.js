@@ -87,7 +87,7 @@ const createConfigCenter = async () => {
 
   const summaryTitle = document.createElement("h1");
   summaryTitle.classList.add("title");
-  summaryTitle.textContent = "3D Neighborhood Discovery";
+  summaryTitle.textContent = "3D Area Explorer";
 
   const summaryDescription = document.createElement("p");
   summaryDescription.classList.add("description");
