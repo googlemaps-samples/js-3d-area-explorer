@@ -31,6 +31,7 @@ import { getConfigCenterConfig } from "./config.js";
 export async function updateCamera() {
   try {
     const { camera: cameraConfig, poi: poiConfig } = getConfigCenterConfig();
+    console.log("The new camera settings set by the user is camera speed: "+cameraConfig.speed+" orbit type: "+cameraConfig.orbitType)
     // Adjust the camera speed of the auto orbit animation
     setAutoOrbitCameraSpeed(cameraConfig.speed);
     await setAutoOrbitType(cameraConfig.orbitType);
@@ -48,6 +49,7 @@ export const updateLocation = async () => {
     const {
       location: { coordinates },
     } = getConfigCenterConfig();
+    console.log("The new coordinates set by the user is lat: "+coordinates.lat+" long: "+coordinates.lng)
 
     // move the camera to face the main location's coordinates
     await performFlyTo(coordinates);
