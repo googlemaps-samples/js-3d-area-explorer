@@ -46,38 +46,6 @@ export async function main() {
       // create markers according to the POIs placed on the map
       await createMarkers(pois, coordinates);
     }
-
-
-// Uncomment and populate this variable in your code:
- const project = 'd-area-explorer-staging';
-
-// Build structured log messages as an object.
-const globalLogFields = {};
-
-// Add log correlation to nest all log messages beneath request log in Log Viewer.
-// (This only works for HTTP-based invocations where `req` is defined.)
-if (typeof req !== 'undefined') {
-  const traceHeader = req.header('X-Cloud-Trace-Context');
-  if (traceHeader && project) {
-    const [trace] = traceHeader.split('/');
-    globalLogFields['logging.googleapis.com/trace'] =
-      `projects/${project}/traces/${trace}`;
-  }
-}
-
-// Complete a structured log entry.
-const entry = Object.assign(
-  {
-    severity: 'NOTICE',
-    message: 'Inside main.js',
-    // Log viewer accesses 'component' as 'jsonPayload.component'.
-    component: 'arbitrary-property',
-  },
-  globalLogFields
-);
-
-// Serialize to a JSON string and output.
-console.log(JSON.stringify(entry));
   } catch (error) {
     console.error(error);
   }
