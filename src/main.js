@@ -38,7 +38,7 @@ export async function main() {
     await initializeCesiumViewer(coordinates, cameraConfig);
 
     if (coordinates.lat && coordinates.lng) {
-      console.log("Inside main.js ")
+      console.info("Inside main.js ")
       // move the camera to face the main location's coordinates
       await performFlyTo(coordinates);
       // based on the given main location, fetch the surrounding POIs of the selected categories
