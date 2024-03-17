@@ -24,7 +24,7 @@ import createMarkers from "../../utils/create-markers.js";
 import { getNearbyPois } from "../../utils/places.js";
 import { getConfigCenterConfig } from "./config.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js'
 
 //import { initializeApp } from "firebase/app";
 //import { getAnalytics } from "firebase/analytics";
@@ -41,8 +41,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
+//const analytics = getAnalytics(app);
+const db = getFirestore();
 
 /**
  * Updates the camera of the map with the current configuration values.
@@ -66,7 +66,9 @@ export async function updateCamera() {
       // Add other relevant camera data as needed
     };
 
-    const docRef = await addDoc(collection(db, "metrics-collection"), data); 
+    //const docRef = await addDoc(collection(analytics, "metrics-collection"), data); 
+    // Add a new document in collection "cities" with ID 'LA'
+    const res = await db.collection('metrics-collection').doc('LA').set(data);
     console.log("Camera settings saved with ID: ", docRef.id);
   } catch (error) {
     console.error(error);
@@ -93,11 +95,7 @@ export const updateLocation = async () => {
 
     const docRef = await addDoc(collection(db, "metrics-collection"), data); 
     console.log("Camera settings saved with ID: ", docRef.id);
-
-
     console.log("The new coordinates set by the user is lat: "+coordinates.lat+" long: "+coordinates.lng)
-    
-
 
     // move the camera to face the main location's coordinates
     await performFlyTo(coordinates);
