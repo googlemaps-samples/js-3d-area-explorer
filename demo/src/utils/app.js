@@ -23,7 +23,7 @@ import {
 import createMarkers from "../../utils/create-markers.js";
 import { getNearbyPois } from "../../utils/places.js";
 import { getConfigCenterConfig } from "./config.js";
-var axios = require('axios');
+//var axios = require('axios');
 
 /**
  * Updates the camera of the map with the current configuration values.
@@ -54,7 +54,7 @@ export const updateLocation = async () => {
     console.log("The new coordinates set by the user is lat: "+coordinates.lat+" long: "+coordinates.lng)
 
     console.log("Got the getConfigCenterConfig function called");
-    var data = JSON.stringify({
+    const data = JSON.stringify({
       "collection": "metrics_collection",
       "database": "metrics_db",
       "dataSource": "metrics",
@@ -73,17 +73,19 @@ export const updateLocation = async () => {
         'Access-Control-Request-Headers': '*',
         'api-key': '3ZQINmRSgTVarizVbAECGRbWaxSyRfTdHZjtOE99wcxq17wPLqWls5JG5tH32Hpj',
       },
-      data: data
+      body: data
   };
   console.log("sending data to mongodb atlas")
 
-  axios(config)
-      .then(function (response) {
-          console.log(JSON.stringify(response.data));
-      })
-      .catch(function (error) {
-          console.log(error);
-      });
+  fetch(config.url, config)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Request failed with status ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => console.log(JSON.stringify(data)))
+  .catch(error => console.error(error));
 
     // move the camera to face the main location's coordinates
     await performFlyTo(coordinates);
