@@ -1,9 +1,10 @@
 ###
 
-FROM node:lts-alpine 
+FROM node:alpine 
 
 RUN npm install -g http-server
-RUN npm install axios
+# RUN npm install axios
+RUN npm install node-fetch
 
 WORKDIR /home/node
 
