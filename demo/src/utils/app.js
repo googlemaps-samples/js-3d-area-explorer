@@ -32,20 +32,20 @@ var axios = require('axios');
  */
 export async function updateCamera() {
   try {
+    console.log("Just inside updateCamera function");
     const { camera: cameraConfig, poi: poiConfig } = getConfigCenterConfig();
+    console.log("Got the getConfigCenterConfig function called");
     var data = JSON.stringify({
-
       "collection": "metrics_collection",
-
       "database": "metrics_db",
-
       "dataSource": "metrics",
-
       "filter": { // Assuming you want to update based on some filter
         "latitude": coordinates.lat, 
         "longitude": coordinates.lng 
       } 
   });
+
+  console.log("the data object is"+data);
     var config = {
       method: 'post',
       url: 'https://us-east-1.aws.data.mongodb-api.com/app/data-vnlwp/endpoint/data/v1/action/findOne',
