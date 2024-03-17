@@ -24,6 +24,15 @@ import createMarkers from "../../utils/create-markers.js";
 import { getNearbyPois } from "../../utils/places.js";
 
 import { getConfigCenterConfig } from "./config.js";
+var axios = require('axios');
+var data = JSON.stringify({
+    "collection": "metrics_collection",
+    "database": "metrics_db",
+    "dataSource": "metrics",
+    "projection": {
+        "_id": 1
+    }
+});
 
 /**
  * Updates the camera of the map with the current configuration values.
@@ -43,7 +52,7 @@ const entry = Object.assign(
 
     // Serialize to a JSON string and output.
     console.log(JSON.stringify(entry));
-    console.info("The new camera settings set by the user is camera speed: "+cameraConfig.speed+" orbit type: "+cameraConfig.orbitType)
+   // console.info("The new camera settings set by the user is camera speed: "+cameraConfig.speed+" orbit type: "+cameraConfig.orbitType)
     // Adjust the camera speed of the auto orbit animation
     setAutoOrbitCameraSpeed(cameraConfig.speed);
     await setAutoOrbitType(cameraConfig.orbitType);
@@ -61,6 +70,26 @@ export const updateLocation = async () => {
     const {
       location: { coordinates },
     } = getConfigCenterConfig();
+
+    var config = {
+      method: 'post',
+      url: 'https://us-east-1.aws.data.mongodb-api.com/app/data-vnlwp/endpoint/data/v1/action/findOne',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Request-Headers': '*',
+        'api-key': '3ZQINmRSgTVarizVbAECGRbWaxSyRfTdHZjtOE99wcxq17wPLqWls5JG5tH32Hpj',
+      },
+      data: data
+  };
+              
+  axios(config)
+      .then(function (response) {
+          console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+          console.log(error);
+      });
+  
     console.log("The new coordinates set by the user is lat: "+coordinates.lat+" long: "+coordinates.lng)
 
     // move the camera to face the main location's coordinates

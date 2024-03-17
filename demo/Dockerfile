@@ -3,6 +3,7 @@
 FROM node:21-alpine
 
 RUN npm install -g http-server
+RUN npm install axios
 
 WORKDIR /home/node
 
