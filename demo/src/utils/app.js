@@ -29,11 +29,6 @@ import { getFirestore, doc, getDoc, getDocs, collection } from "https://www.gsta
 //import { initializeApp } from "firebase/app";
 //import { getAnalytics } from "firebase/analytics";
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-
 const firebaseConfig = {
   apiKey: "AIzaSyAo6DIOnhYdywBidl4clsPZPkQkXfq6QhI",
   authDomain: "d-area-explorer-staging.firebaseapp.com",
@@ -43,6 +38,11 @@ const firebaseConfig = {
   appId: "1:862242299614:web:815da51faf02d9373f2c4f",
   measurementId: "G-540GBW9XC8"
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 
 /**
  * Updates the camera of the map with the current configuration values.
