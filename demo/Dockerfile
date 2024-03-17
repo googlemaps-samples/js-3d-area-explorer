@@ -3,8 +3,8 @@
 FROM node:alpine 
 
 RUN npm install -g http-server
-# RUN npm install axios
-RUN npm install -g node-fetch
+RUN npm -g install axios
+# RUN npm install -g node-fetch
 
 WORKDIR /home/node
 
