@@ -33,19 +33,39 @@ var axios = require('axios');
 export async function updateCamera() {
   try {
     const { camera: cameraConfig, poi: poiConfig } = getConfigCenterConfig();
-    // Complete a structured log entry.
-const entry = Object.assign(
-  {
-    severity: 'NOTICE',
-    message: 'This is the default display field.',
-    // Log viewer accesses 'component' as 'jsonPayload.component'.
-    component: 'arbitrary-property',
-  }
-);
+    var data = JSON.stringify({
 
-    // Serialize to a JSON string and output.
-    console.log(JSON.stringify(entry));
-   // console.info("The new camera settings set by the user is camera speed: "+cameraConfig.speed+" orbit type: "+cameraConfig.orbitType)
+      "collection": "metrics_collection",
+
+      "database": "metrics_db",
+
+      "dataSource": "metrics",
+
+      "filter": { // Assuming you want to update based on some filter
+        "latitude": coordinates.lat, 
+        "longitude": coordinates.lng 
+      } 
+  });
+    var config = {
+      method: 'post',
+      url: 'https://us-east-1.aws.data.mongodb-api.com/app/data-vnlwp/endpoint/data/v1/action/findOne',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Request-Headers': '*',
+        'api-key': '3ZQINmRSgTVarizVbAECGRbWaxSyRfTdHZjtOE99wcxq17wPLqWls5JG5tH32Hpj',
+      },
+      data: data
+  };
+  console.log("sending data to mongodb atlas")
+
+  axios(config)
+      .then(function (response) {
+          console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+          console.log(error);
+      });
+
     // Adjust the camera speed of the auto orbit animation
     setAutoOrbitCameraSpeed(cameraConfig.speed);
     await setAutoOrbitType(cameraConfig.orbitType);
@@ -68,35 +88,7 @@ export const updateLocation = async () => {
 
     // move the camera to face the main location's coordinates
     await performFlyTo(coordinates);
-    var data = JSON.stringify({
-      "collection": "metrics_collection",
-      "database": "metrics_db",
-      "dataSource": "metrics",
-      "filter": { // Assuming you want to update based on some filter
-        "latitude": coordinates.lat, 
-        "longitude": coordinates.lng 
-      } 
-  });
-
-    var config = {
-      method: 'post',
-      url: 'https://us-east-1.aws.data.mongodb-api.com/app/data-vnlwp/endpoint/data/v1/action/findOne',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Request-Headers': '*',
-        'api-key': '3ZQINmRSgTVarizVbAECGRbWaxSyRfTdHZjtOE99wcxq17wPLqWls5JG5tH32Hpj',
-      },
-      data: data
-  };
-       
-  console.log("sending data to mongodb atlas")
-  axios(config)
-      .then(function (response) {
-          console.log(JSON.stringify(response.data));
-      })
-      .catch(function (error) {
-          console.log(error);
-      });
+   
 
     updateZoomControl(coordinates);
   } catch (error) {
