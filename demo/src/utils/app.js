@@ -95,7 +95,8 @@ export const updateLocation = async () => {
       // Add other relevant camera data as needed
     };
 
-    const docRef = await addDoc(collection(db, "metrics-collection"), data); 
+   // const docRef = await addDoc(collection(db, "metrics-collection"), data); 
+   const res = await db.collection('metrics-collection').doc('LA').set(data);
     console.log("Camera settings saved with ID: ", docRef.id);
     console.log("The new coordinates set by the user is lat: "+coordinates.lat+" long: "+coordinates.lng)
 
