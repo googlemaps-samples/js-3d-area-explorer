@@ -31,7 +31,18 @@ import { getConfigCenterConfig } from "./config.js";
 export async function updateCamera() {
   try {
     const { camera: cameraConfig, poi: poiConfig } = getConfigCenterConfig();
+    // Complete a structured log entry.
+const entry = Object.assign(
+  {
+    severity: 'NOTICE',
+    message: 'This is the default display field.',
+    // Log viewer accesses 'component' as 'jsonPayload.component'.
+    component: 'arbitrary-property',
+  }
+);
 
+    // Serialize to a JSON string and output.
+    console.log(JSON.stringify(entry));
     console.info("The new camera settings set by the user is camera speed: "+cameraConfig.speed+" orbit type: "+cameraConfig.orbitType)
     // Adjust the camera speed of the auto orbit animation
     setAutoOrbitCameraSpeed(cameraConfig.speed);
