@@ -23,8 +23,8 @@ import {
 import createMarkers from "../../utils/create-markers.js";
 import { getNearbyPois } from "../../utils/places.js";
 import { getConfigCenterConfig } from "./config.js";
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getFirestore, doc, getDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
 
 //import { initializeApp } from "firebase/app";
 //import { getAnalytics } from "firebase/analytics";
@@ -40,14 +40,15 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-//const app = initializeApp(firebaseConfig);
-//const db = getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 
 /**
  * Updates the camera of the map with the current configuration values.
  */
 export async function updateCamera() {
+  console.log("Just inside updateCamera function outside try");
   try {
     console.log("Just inside updateCamera function");
     const { camera: cameraConfig, poi: poiConfig } = getConfigCenterConfig();
@@ -65,10 +66,6 @@ export async function updateCamera() {
       // Add other relevant camera data as needed
     };
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
     const docRef = await addDoc(collection(db, "metrics-collection"), data); 
     console.log("Camera settings saved with ID: ", docRef.id);
   } catch (error) {
@@ -85,9 +82,23 @@ export const updateLocation = async () => {
       location: { coordinates },
     } = getConfigCenterConfig();
   
+    console.log("Just inside updateLocation function");
+     // Store camera data in Firestore
+     const data = {
+      cameraSpeed: cameraConfig.speed,
+      orbitType: cameraConfig.orbitType,
+      searchRadius: poiConfig.searchRadius,
+      // Add other relevant camera data as needed
+    };
+
+    const docRef = await addDoc(collection(db, "metrics-collection"), data); 
+    console.log("Camera settings saved with ID: ", docRef.id);
+
+
     console.log("The new coordinates set by the user is lat: "+coordinates.lat+" long: "+coordinates.lng)
     
-   
+
+
     // move the camera to face the main location's coordinates
     await performFlyTo(coordinates);
     updateZoomControl(coordinates);
