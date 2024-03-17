@@ -63,7 +63,11 @@ export const updateLocation = async () => {
     const {
       location: { coordinates },
     } = getConfigCenterConfig();
+  
+    console.log("The new coordinates set by the user is lat: "+coordinates.lat+" long: "+coordinates.lng)
 
+    // move the camera to face the main location's coordinates
+    await performFlyTo(coordinates);
     var data = JSON.stringify({
       "collection": "metrics_collection",
       "database": "metrics_db",
@@ -93,11 +97,7 @@ export const updateLocation = async () => {
       .catch(function (error) {
           console.log(error);
       });
-  
-    console.log("The new coordinates set by the user is lat: "+coordinates.lat+" long: "+coordinates.lng)
 
-    // move the camera to face the main location's coordinates
-    await performFlyTo(coordinates);
     updateZoomControl(coordinates);
   } catch (error) {
     console.error(error);
