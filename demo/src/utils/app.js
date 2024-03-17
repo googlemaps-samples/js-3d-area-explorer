@@ -23,8 +23,11 @@ import {
 import createMarkers from "../../utils/create-markers.js";
 import { getNearbyPois } from "../../utils/places.js";
 import { getConfigCenterConfig } from "./config.js";
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-lite.js'
+const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
+const { getFirestore, Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');
+
+//import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+//import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-lite.js'
 
 //import { initializeApp } from "firebase/app";
 //import { getAnalytics } from "firebase/analytics";
