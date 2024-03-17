@@ -4,7 +4,7 @@ FROM node:alpine
 
 RUN npm install -g http-server
 # RUN npm install axios
-RUN npm install node-fetch
+RUN npm install -g node-fetch
 
 WORKDIR /home/node
 
