@@ -1,6 +1,6 @@
 ###
 
-FROM node:21-alpine
+FROM node:lts-alpine 
 
 RUN npm install -g http-server
 RUN npm install axios
