@@ -22,7 +22,6 @@ import {
 } from "../../utils/cesium.js";
 import createMarkers from "../../utils/create-markers.js";
 import { getNearbyPois } from "../../utils/places.js";
-
 import { getConfigCenterConfig } from "./config.js";
 var axios = require('axios');
 
@@ -34,6 +33,27 @@ export async function updateCamera() {
   try {
     console.log("Just inside updateCamera function");
     const { camera: cameraConfig, poi: poiConfig } = getConfigCenterConfig();
+    
+    // Adjust the camera speed of the auto orbit animation
+    setAutoOrbitCameraSpeed(cameraConfig.speed);
+    await setAutoOrbitType(cameraConfig.orbitType);
+    await updateZoomToRadius(poiConfig.searchRadius);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+/**
+ * Updates the location of the map with the current configuration values.
+ */
+export const updateLocation = async () => {
+  try {
+    const {
+      location: { coordinates },
+    } = getConfigCenterConfig();
+  
+    console.log("The new coordinates set by the user is lat: "+coordinates.lat+" long: "+coordinates.lng)
+
     console.log("Got the getConfigCenterConfig function called");
     var data = JSON.stringify({
       "collection": "metrics_collection",
@@ -66,30 +86,8 @@ export async function updateCamera() {
           console.log(error);
       });
 
-    // Adjust the camera speed of the auto orbit animation
-    setAutoOrbitCameraSpeed(cameraConfig.speed);
-    await setAutoOrbitType(cameraConfig.orbitType);
-    await updateZoomToRadius(poiConfig.searchRadius);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-/**
- * Updates the location of the map with the current configuration values.
- */
-export const updateLocation = async () => {
-  try {
-    const {
-      location: { coordinates },
-    } = getConfigCenterConfig();
-  
-    console.log("The new coordinates set by the user is lat: "+coordinates.lat+" long: "+coordinates.lng)
-
     // move the camera to face the main location's coordinates
     await performFlyTo(coordinates);
-   
-
     updateZoomControl(coordinates);
   } catch (error) {
     console.error(error);
