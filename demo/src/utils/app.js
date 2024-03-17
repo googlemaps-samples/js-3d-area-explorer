@@ -87,9 +87,11 @@ export const updateLocation = async () => {
     console.log("Just inside updateLocation function");
      // Store camera data in Firestore
      const data = {
-      cameraSpeed: cameraConfig.speed,
-      orbitType: cameraConfig.orbitType,
-      searchRadius: poiConfig.searchRadius,
+      lat: coordinates.lat,
+      long: coordinates.lng
+      // cameraSpeed: cameraConfig.speed,
+      //orbitType: cameraConfig.orbitType,
+      //searchRadius: poiConfig.searchRadius,
       // Add other relevant camera data as needed
     };
 
