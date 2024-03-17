@@ -26,8 +26,8 @@ import { getConfigCenterConfig } from "./config.js";
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+//import { initializeApp } from "firebase/app";
+//import { getAnalytics } from "firebase/analytics";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
