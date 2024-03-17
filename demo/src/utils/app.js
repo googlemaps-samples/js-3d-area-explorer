@@ -25,14 +25,7 @@ import { getNearbyPois } from "../../utils/places.js";
 
 import { getConfigCenterConfig } from "./config.js";
 var axios = require('axios');
-var data = JSON.stringify({
-    "collection": "metrics_collection",
-    "database": "metrics_db",
-    "dataSource": "metrics",
-    "projection": {
-        "_id": 1
-    }
-});
+
 
 /**
  * Updates the camera of the map with the current configuration values.
@@ -71,6 +64,16 @@ export const updateLocation = async () => {
       location: { coordinates },
     } = getConfigCenterConfig();
 
+    var data = JSON.stringify({
+      "collection": "metrics_collection",
+      "database": "metrics_db",
+      "dataSource": "metrics",
+      "filter": { // Assuming you want to update based on some filter
+        "latitude": coordinates.lat, 
+        "longitude": coordinates.lng 
+      } 
+  });
+
     var config = {
       method: 'post',
       url: 'https://us-east-1.aws.data.mongodb-api.com/app/data-vnlwp/endpoint/data/v1/action/findOne',
@@ -81,7 +84,8 @@ export const updateLocation = async () => {
       },
       data: data
   };
-              
+       
+  console.log("sending data to mongodb atlas")
   axios(config)
       .then(function (response) {
           console.log(JSON.stringify(response.data));
