@@ -23,7 +23,23 @@ import {
 import createMarkers from "../../utils/create-markers.js";
 import { getNearbyPois } from "../../utils/places.js";
 import { getConfigCenterConfig } from "./config.js";
-//var axios = require('axios');
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAo6DIOnhYdywBidl4clsPZPkQkXfq6QhI",
+  authDomain: "d-area-explorer-staging.firebaseapp.com",
+  projectId: "d-area-explorer-staging",
+  storageBucket: "d-area-explorer-staging.appspot.com",
+  messagingSenderId: "862242299614",
+  appId: "1:862242299614:web:815da51faf02d9373f2c4f",
+  measurementId: "G-540GBW9XC8"
+};
 
 /**
  * Updates the camera of the map with the current configuration values.
@@ -37,6 +53,21 @@ export async function updateCamera() {
     setAutoOrbitCameraSpeed(cameraConfig.speed);
     await setAutoOrbitType(cameraConfig.orbitType);
     await updateZoomToRadius(poiConfig.searchRadius);
+
+     // Store camera data in Firestore
+     const data = {
+      cameraSpeed: cameraConfig.speed,
+      orbitType: cameraConfig.orbitType,
+      searchRadius: poiConfig.searchRadius,
+      // Add other relevant camera data as needed
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    
+    const docRef = await addDoc(collection(db, "camera_settings"), data); 
+    console.log("Camera settings saved with ID: ", docRef.id);
   } catch (error) {
     console.error(error);
   }
@@ -52,41 +83,8 @@ export const updateLocation = async () => {
     } = getConfigCenterConfig();
   
     console.log("The new coordinates set by the user is lat: "+coordinates.lat+" long: "+coordinates.lng)
-
-    console.log("Got the getConfigCenterConfig function called");
-    const data = JSON.stringify({
-      "collection": "metrics_collection",
-      "database": "metrics_db",
-      "dataSource": "metrics",
-      "filter": { // Assuming you want to update based on some filter
-        "latitude": coordinates.lat, 
-        "longitude": coordinates.lng 
-      } 
-  });
-
-  console.log("the data object is"+data);
-    var config = {
-      method: 'post',
-      url: 'https://us-east-1.aws.data.mongodb-api.com/app/data-vnlwp/endpoint/data/v1/action/findOne',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Request-Headers': '*',
-        'api-key': '3ZQINmRSgTVarizVbAECGRbWaxSyRfTdHZjtOE99wcxq17wPLqWls5JG5tH32Hpj',
-      },
-      body: data
-  };
-  console.log("sending data to mongodb atlas")
-
-  fetch(config.url, config)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`Request failed with status ${response.status}`);
-    }
-    return response.json();
-  })
-  .then(data => console.log(JSON.stringify(data)))
-  .catch(error => console.error(error));
-
+    
+   
     // move the camera to face the main location's coordinates
     await performFlyTo(coordinates);
     updateZoomControl(coordinates);
