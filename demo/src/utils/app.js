@@ -25,7 +25,6 @@ import { getNearbyPois } from "../../utils/places.js";
 import { getConfigCenterConfig } from "./config.js";
 var axios = require('axios');
 
-
 /**
  * Updates the camera of the map with the current configuration values.
  */
