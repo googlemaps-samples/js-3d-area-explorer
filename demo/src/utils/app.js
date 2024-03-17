@@ -68,7 +68,7 @@ export async function updateCamera() {
 
     //const docRef = await addDoc(collection(analytics, "metrics-collection"), data); 
     // Add a new document in collection "cities" with ID 'LA'
-    const res = await db.collection('metrics-collection').add({
+    db.collection('metrics-collection').add({
       name: 'Tokyo',
       country: 'Japan'
     });
@@ -99,7 +99,7 @@ export const updateLocation = async () => {
     };
 
    // const docRef = await addDoc(collection(db, "metrics-collection"), data); 
-    const res = await db.collection('metrics-collection').add({
+  db.collection('metrics-collection').add({
     lat: coordinates.lat,
     long: coordinates.lng
   });
