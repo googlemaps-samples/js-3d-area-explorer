@@ -26,10 +26,13 @@ import { getConfigCenterConfig } from "./config.js";
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyAo6DIOnhYdywBidl4clsPZPkQkXfq6QhI",
@@ -65,7 +68,7 @@ export async function updateCamera() {
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-    
+
     const docRef = await addDoc(collection(db, "camera_settings"), data); 
     console.log("Camera settings saved with ID: ", docRef.id);
   } catch (error) {

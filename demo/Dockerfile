@@ -3,7 +3,7 @@
 FROM node:alpine 
 
 RUN npm install -g http-server
-RUN npm -g install firebase
+RUN npm install -g firebase
 # RUN npm install -g node-fetch
 
 WORKDIR /home/node
