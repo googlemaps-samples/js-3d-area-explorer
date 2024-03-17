@@ -40,8 +40,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+//const app = initializeApp(firebaseConfig);
+//const db = getFirestore(app);
 
 
 /**
@@ -69,7 +69,7 @@ export async function updateCamera() {
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    const docRef = await addDoc(collection(db, "camera_settings"), data); 
+    const docRef = await addDoc(collection(db, "metrics-collection"), data); 
     console.log("Camera settings saved with ID: ", docRef.id);
   } catch (error) {
     console.error(error);
