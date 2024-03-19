@@ -20,10 +20,11 @@ Also, it is always a good idea to add <a href="https://developers.google.com/map
 
 There are no external dependencies to view and work with the 3D Area Explorer solution.
 
-1. download the content of the `src` folder
-2. adjust the `config.json` to your needs (see [Configuration](#Configuration))
-3. add your API key to `env.js` (see [env.exmaple.js](src/env.exmaple.js))
-4. serve the files with a static webserver
+1. [Download](https://github.com/googlemaps-samples/js-3d-area-explorer/archive/refs/heads/main.zip) or `git clone` this repository
+2. Extract the contents of the `src` folder
+3. Adjust the `config.json` to your needs (see [Configuration](#Configuration))
+4. Add your Google Maps Platform API key to `env.js` (see [env.exmaple.js](src/env.exmaple.js))
+5. Serve the files with a static webserver
 
 If you want to play with the demo (with a configuration UI) without a [local installation](#local-development) you can always use our [hosted version](url).
 
