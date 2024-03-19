@@ -5,7 +5,7 @@
 
 This is the sample app for 3D Area Explorer solution.  This solution leverages the capabilities of Google Maps Platform Photorealistic 3D Tiles and the Places API to create captivating, interactive 3D environments.
 
-This repository consists of two parts. The demo ap and an Admin app which adds a control panel for settings.
+This repository consists of two parts. A Demo App, which is an example customized deployment, and an Admin App, which provides a UI control panel to adjust the solution settings visually like location, camera, and POI types.
 
 ## Installation
 
