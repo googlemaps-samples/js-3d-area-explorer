@@ -17,6 +17,24 @@
  *
  * @returns {Partial<NeighbourhoodDiscoveryConfig>} The customized configuration data.
  */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+import { getFirestore, Timestamp,addDoc, collection } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js'
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAo6DIOnhYdywBidl4clsPZPkQkXfq6QhI",
+  authDomain: "d-area-explorer-staging.firebaseapp.com",
+  projectId: "d-area-explorer-staging",
+  storageBucket: "d-area-explorer-staging.appspot.com",
+  messagingSenderId: "862242299614",
+  appId: "1:862242299614:web:815da51faf02d9373f2c4f",
+  measurementId: "G-540GBW9XC8"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app,"metrics-db");
+
+
 export const getCustomConfig = () => {
   const params = new URLSearchParams(window.location.hash.replace("#", ""));
 
@@ -83,9 +101,13 @@ export const setCustomConfig = (parameter, value) => {
     // Remove parameter value
     params.delete(parameter);
   }
-
   window.location.hash = params;
+  
 };
+
+
+const docRef = await addDoc(collection(db, "metrics-url"), data); 
+console.log("Camera settings saved with ID: ", docRef.id);
 
 /**
  * Returns the data of an HTML form element in form of an object.

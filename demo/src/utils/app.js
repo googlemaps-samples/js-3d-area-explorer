@@ -20,6 +20,7 @@ import {
   updateZoomToRadius,
   zoomResetCallback,
 } from "../../utils/cesium.js";
+import { FIREBASE_API_KEY } from "../../env.js";
 import createMarkers from "../../utils/create-markers.js";
 import { getNearbyPois } from "../../utils/places.js";
 import { getConfigCenterConfig } from "./config.js";
@@ -27,7 +28,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebas
 import { getFirestore, Timestamp,addDoc, collection } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAo6DIOnhYdywBidl4clsPZPkQkXfq6QhI",
+  apiKey: FIREBASE_API_KEY,
   authDomain: "d-area-explorer-staging.firebaseapp.com",
   projectId: "d-area-explorer-staging",
   storageBucket: "d-area-explorer-staging.appspot.com",
@@ -96,13 +97,11 @@ export const updateLocation = async () => {
       camera_speed: cameraConfig.speed,
       camera_orbitType: cameraConfig.orbitType,
       poi_type: poiConfig.types
-
     };
     
     const docRef = await addDoc(collection(db, "metrics-collection"), data); 
     console.log("Camera settings saved with ID: ", docRef.id);
 
-  
     // move the camera to face the main location's coordinates
     await performFlyTo(coordinates);
     updateZoomControl(coordinates);
