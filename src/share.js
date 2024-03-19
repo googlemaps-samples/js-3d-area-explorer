@@ -18,7 +18,6 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app,"metrics-db");
 
 const shareButton = document.querySelector('.share-button');
-const embedButton = document.querySelector('.embed-button');
 
 function createEmbedCode(url) {
   const iframeHTML = `<iframe src="${url}" width="600" height="450" frameborder="0"></iframe>`;
@@ -37,15 +36,4 @@ shareButton.addEventListener('click', () => {
     
     const docRef = addDoc(collection(db, "metrics-urls"), data); 
     console.log("Camera settings saved with ID: ", docRef.id);
-});
-
-
-
-embedButton.addEventListener('click', () => {
-  const currentURL = window.location.href;
-  const embedCode = createEmbedCode(currentURL); 
-
-  navigator.clipboard.writeText(embedCode)
-    .then(() => console.log('Embed code copied to clipboard'))
-    .catch((error) => console.log('Error copying embed code: ', error));
 });
