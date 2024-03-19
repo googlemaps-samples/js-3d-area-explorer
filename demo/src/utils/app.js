@@ -91,6 +91,10 @@ export const updateLocation = async () => {
   
     const data = {
       timestamp: Timestamp.now(),
+      // Extract and format date:
+      date: Timestamp.now().toDate().toLocaleDateString(), 
+      // Extract and format time:
+      time: Timestamp.now().toDate().toLocaleTimeString('en-US', { hour: '2-digit', minute:'2-digit' }),
       lat: coordinates.lat,
       long: coordinates.lng,
       poi_density: poiConfig.density,
