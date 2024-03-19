@@ -9,7 +9,7 @@ This repository consists of two parts. A Demo App, which is an example customize
 
 ## Installation
 
-You need to create a Google Maps Platform API Key and restrict it to at least these APIs.
+You need to create a [Google Maps Platform API Key](https://developers.google.com/maps/documentation/javascript/get-api-key) and restrict it to the following three APIs.
 - <a href="https://console.cloud.google.com/marketplace/product/google/tile.googleapis.com?utm_source=3d_solutions_storytelling" target="_blank">Map Tiles API</a>
 - <a href="https://console.cloud.google.com/marketplace/product/google/places-backend.googleapis.com?utm_source=3d_solutions_storytelling" target="_blank">Places API</a>
 - Maps JavaScript API 
