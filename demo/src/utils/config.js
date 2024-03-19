@@ -19,9 +19,10 @@
  */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
 import { getFirestore, Timestamp,addDoc, collection } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js'
+import { FIREBASE_API_KEY } from "../../env.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAo6DIOnhYdywBidl4clsPZPkQkXfq6QhI",
+  apiKey: FIREBASE_API_KEY,
   authDomain: "d-area-explorer-staging.firebaseapp.com",
   projectId: "d-area-explorer-staging",
   storageBucket: "d-area-explorer-staging.appspot.com",
@@ -106,8 +107,8 @@ export const setCustomConfig = (parameter, value) => {
 };
 
 
-const docRef = await addDoc(collection(db, "metrics-url"), data); 
-console.log("Camera settings saved with ID: ", docRef.id);
+//const docRef = await addDoc(collection(db, "metrics-url"), data); 
+//console.log("Camera settings saved with ID: ", docRef.id);
 
 /**
  * Returns the data of an HTML form element in form of an object.
