@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="./main.css" />
-    <script type="module" src="./share.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.105/Build/Cesium/Cesium.js"></script>
     <link
       href="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.105/Build/Cesium/Widgets/widgets.css"
@@ -18,49 +17,48 @@
       <!-- JavaScript is used to manipulate the HTML elements, add event listeners,
         and perform other actions to make the cesium globe interactive and dynamic. -->
       <div id="cesium-container">
-        
         <div class="custom-overlay overlay-is-hidden">
           <div class="zoom-control">
             <button
               class="zoom-control-button zoom-in-button"
-              aria-label="Zoom in">
+              aria-label="Zoom in"
+            >
               <img src="assets/icons/zoom-control-plus-icon.svg" alt="" />
             </button>
             <button
               class="zoom-control-button zoom-reset-button"
-              aria-label="Reset zoom">
+              aria-label="Reset zoom"
+            >
               <img src="assets/icons/zoom-control-reset-icon.svg" alt="" />
             </button>
             <button
               class="zoom-control-button zoom-out-button"
-              aria-label="Zoom out">
+              aria-label="Zoom out"
+            >
               <img src="assets/icons/zoom-control-minus-icon.svg" alt="" />
             </button>
-            
           </div>
           <div class="auto-orbit-control">
-            <label class="switch" for="toggle-switch"> 
-              <div class="input-wrapper">
+            <label class="switch" for="toggle-switch"
+              ><div class="input-wrapper">
                 <input type="checkbox" id="toggle-switch" /><span
-                  class="slider"> 
-                </span></div></label>
+                  class="slider"
+                ></span></div
+            ></label>
             <p>Auto Orbit</p>
-            
           </div>
         </div>
         <div class="github-banner">
           Share your current demo
           <button class="share-button"  aria-label="Copy Demo URL to Clipboard">Copy demo link  
           </button>
-          
-      </div>
         <div class="cesium-attribution-container">
           rendered with
           <a
             class="cesium-logo__link"
             href="https://cesium.com/"
             target="_blank"
-            > <img
+            ><img
               class="cesium-logo__image"
               src="assets/cesium-js.png"
               alt="CesiumJS Logo"
@@ -133,6 +131,6 @@
     </main>
     <!-- Central script to load all javascript files
     to initialize google maps, cesium viewer and dynamically create UI Elements -->
-    <script type="module" src="../demo/config-panel.js"></script>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
