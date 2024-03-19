@@ -130,9 +130,9 @@ const createConfigCenter = async () => {
 
   const architectureCenterLink = document.createElement("a");
   architectureCenterLink.classList.add("architecture-center-link");
-  architectureCenterLink.href = ""; // TODO: add architecture center link
+  architectureCenterLink.href = "https://github.com/googlemaps-samples/js-3d-area-explorer"; // TODO: add architecture center link
   architectureCenterLink.target = "_blank";
-  architectureCenterLink.textContent = "Go to Architecture Center";
+  architectureCenterLink.textContent = "Downlad the code";
 
   // Append the HTML elements to the container
   summaryHeader.appendChild(gmpLogo);

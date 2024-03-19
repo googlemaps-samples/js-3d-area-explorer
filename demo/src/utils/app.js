@@ -62,14 +62,7 @@ export async function updateCamera() {
       searchRadius: poiConfig.searchRadius,
       // Add other relevant camera data as needed
     };
-
-    //const docRef = await addDoc(collection(analytics, "metrics-collection"), data); 
-    // Add a new document in collection "cities" with ID 'LA'
-    //db.collection('metrics-collection').add({
-     // name: 'Tokyo',
-     // country: 'Japan'
-   // });
-   // console.log("Camera settings saved with ID: ", docRef.id);
+    
   } catch (error) {
     console.error(error);
   }
