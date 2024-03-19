@@ -1,8 +1,6 @@
 
 # 3D Area Explorer
 
-
-
 ## Overview
 
 This is the sample app for 3D Area Explorer solution.  This solution leverages the capabilities of Google Maps Platform Photorealistic 3D Tiles and the Places API to create captivating, interactive 3D environments.
@@ -11,13 +9,12 @@ This repository consists of two parts. The demo ap and an Admin app which adds a
 
 ## Installation
 
-You need to create a Google API Key and restrict it to at least these APIs.
-
-- [Map Tiles API](https://console.cloud.google.com/marketplace/product/google/tile.googleapis.com?utm_source=3d_solutions_storytelling)
+You need to create a Google Maps Platform API Key and restrict it to at least these APIs.
+- <a href="https://console.cloud.google.com/marketplace/product/google/tile.googleapis.com?utm_source=3d_solutions_storytelling" target="_blank">Map Tiles API</a>
+- <a href="https://console.cloud.google.com/marketplace/product/google/places-backend.googleapis.com?utm_source=3d_solutions_storytelling" target="_blank">Places API</a>
 - Maps JavaScript API 
-- [Places API](https://console.cloud.google.com/marketplace/product/google/places-backend.googleapis.com?utm_source=3d_solutions_storytelling)
 
-Also, it is always a good idea to add restrictions for specific websites (i.e. `localhost:5500` for local development).
+Also, it is always a good idea to add <a href="https://developers.google.com/maps/api-security-best-practices#restricting-api-keys" target="_blank">restrictions</a> for specific websites (i.e. `localhost:5500` for local development, or `www.yourdomain.com` for production deployment).
 
 ### 3D Area Explorer
 
