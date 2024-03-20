@@ -27,6 +27,7 @@ import { getConfigCenterConfig } from "./config.js";
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
 import { getFirestore, Timestamp,addDoc, collection } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js'
+import { FIREBASE_API_KEY } from "../../env.js";
 
 const firebaseConfig = {
   apiKey: FIREBASE_API_KEY,
