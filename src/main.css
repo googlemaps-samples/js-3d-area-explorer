@@ -252,6 +252,7 @@ input[type="range"]::-moz-range-track {
 /* ---- layout ---- */
 .main-container {
   --sidebar-width: clamp(350px, 50vw, 400px);
+  position: relative;
   padding-bottom: 60px; /* Adjust this value based on the height of your banner */
   display: grid;
   grid-template-columns: 1fr 0;
@@ -351,12 +352,14 @@ input[type="range"]::-moz-range-track {
 
 .github-banner {
   /* Existing styles */
-  position: fixed; 
-  bottom: 0;
-  left: 0;
-  width: 100%; 
-  padding: 5px 10px; 
-  background-color: #ffffff; /* Example dark color */
+  display: flex;
+  border-radius: 56px;
+  position: absolute; 
+  align-items: center;
+  top: 20px;
+  left: 50%;
+  padding: 15px 15px; 
+  font-size: 18;
   color: rgb(12, 4, 4);
   text-align: center;
   z-index: 20; /* Ensure banner is on top */
