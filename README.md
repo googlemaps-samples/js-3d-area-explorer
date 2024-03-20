@@ -1,13 +1,15 @@
 
 # 3D Area Explorer
 
+![thumbnail](./thumbnail-min.png)
+
 ## Overview
 
 This is the sample app for 3D Area Explorer solution.  This solution leverages the capabilities of Google Maps Platform Photorealistic 3D Tiles and the Places API to create captivating, interactive 3D environments.
 
 This repository consists of two parts. A Demo App, which is an example customized deployment, and an Admin App, which provides a UI control panel to adjust the solution settings visually like location, camera, and POI types.
 
-## Installation
+## Prerequisites
 
 You need to create a [Google Maps Platform API Key](https://developers.google.com/maps/documentation/javascript/get-api-key) and restrict it to the following three APIs.
 - <a href="https://console.cloud.google.com/marketplace/product/google/tile.googleapis.com?utm_source=3d_solutions_storytelling" target="_blank">Map Tiles API</a>
@@ -16,9 +18,11 @@ You need to create a [Google Maps Platform API Key](https://developers.google.co
 
 Also, it is always a good idea to add <a href="https://developers.google.com/maps/api-security-best-practices#restricting-api-keys" target="_blank">restrictions</a> for specific websites (i.e. `localhost:5500` for local development, or `www.yourdomain.com` for production deployment).
 
-### 3D Area Explorer
+## Hosted admin app
 
-There are no external dependencies to view and work with the 3D Area Explorer solution.
+If you want to try with the app without any [local installation](#local-development), try our [hosted demo version](https://js-3d-area-explorer-demo-dev-t6a6o7lkja-uc.a.run.app/).
+
+### Quickstart - Static webserver
 
 1. [Download](https://github.com/googlemaps-samples/js-3d-area-explorer/archive/refs/heads/main.zip) or `git clone` this repository
 2. Extract the contents of the `src` folder
@@ -26,7 +30,49 @@ There are no external dependencies to view and work with the 3D Area Explorer so
 4. Add your Google Maps Platform API key to [env.exmaple.js](src/env.exmaple.js) and rename the file to `env.js`
 5. Serve the files with a static webserver
 
-If you want to play with the demo (with a configuration UI) without a [local installation](#local-development) you can always use our [hosted version](url).
+### Quickstart: Start Admin App using build in bash script
+
+1. Clone this repo to your local machine: `git clone ...`
+2. Run the admin setup script: `cd js-3d-area-explorer && chmod +x build_admin.sh`
+3. Start the server: `./build_admin.sh <YOUR_GMP_API_KEY>`
+    * Note: The script can pick up the API_KEY from envrionment variable `API_KEY` as well.
+
+
+## Build using Node.js
+
+### Demo app
+
+You can  use your own local webserver to show the 3D Area Explorer app like this:
+
+* From the root directory: `npx http-server -p 5500 ./src`
+For the local development you still need the API key for 3D Map Tiles and Google Places/Maps requests.
+
+## Build using Docker
+
+### Build the Demo App with Docker
+
+You need to have docker installed to best work with the **demo-app** locally. 
+
+1. Clone the repository
+2. `docker-compose build demo`
+3. `docker-compose up demo`
+
+### Build the Admin App with Docker
+
+There is a second docker compose service `docker-compose up app` which only serves the admin app. For this you may need to update the `config.json` file to include you data.
+
+### Manually build the Admin app
+Note: You should follow these instructions if you want to create your own admin app in a 
+different language other than bash.
+
+To start the local server as **admin app** do the following:
+
+1. Copy the files in demo/src to demo/
+     * Bash command from `/demo` directory: `cp -r ../demo/src ./demo`
+2. In index.html, at the end of the file, it has reference to main.js. Change it to demo/sidebar.js.
+    * Bash command from `/src` directory: `sed -i'.bak' "s/main.js/demo\/sidebar.js/g" index.html`
+3. Start the node app by running npx
+    * Bash commpand from `src` directory: `http-server -p 5500 ./src`
 
 ## Configuration
 
@@ -67,58 +113,7 @@ Here are some highlights:
   - **pitch**: refers to the tilt of the camera (negative to look down)
   - **range**: refers to the distance from the point the camera is looking at
 
-## Local development
 
-For the local development you still need the API key for 3D Map Tiles and Google Places/Maps requests.
-
-### NodeJS server
-
-You can  use your own local webserver to show the 3D Area Explorer app like this:
-
-`npx http-server -p 5500 ./src`
-
-**Manually build the Admin app**
-
-To start the local server as **admin app** do the following:
-
-Copy the files in demo/src to demo/
-Bash command for above step is `cp -r ../demo/src ./demo`
-
-In index.html, at the end of the file, it has reference to main.js. Change it to demo/sidebar.js.
-Bash command for above `sed -i "s/main.js/demo\/sidebar.js/g" index.html`
-
-And then you can start the node app by running npx `http-server -p 5500 ./src`
-
-### Use bash script to build the Admin App
-
-We also provide a bash script that can be used to run the service in  the admin mode.
-
-`chmod +x build_admin.sh`
-
-Start it like ./build_admin.sh <API_KEY>
-The script can pick up the API_KEY from envrionment variable `API_KEY` as well.
-
-### Docker
-
-You need to have docker installed to best work with the **demo-app** locally. 
-
-1. Clone the repository
-2. `docker-compose build demo`
-3. `docker-compose up demo`
-
-**Admin app with Docker**
-
-There is a second docker compose service `docker-compose up app` which only serves the admin app. For this you may need to update the `config.json` file to include you data.
-
-### IDEs
-
-Most IDEs include some kind of server for static files. Just point it to the `./src` directory and set the right port.
-
-## Deployment
-
-To deploy the app you need to upload everything in the `src` folder to a static webserver or some other hosting service. A static webserver is enough. You need a domain for you webspace, though. Since the Google Maps API key is only restricted on a domain you would risk missuse of the key.
-
-Included in the repository is a `Dockerfile` which can be used to build a docker image. This can be used to deploy with Google Cloud Run or other container cloud services.
 
 ## Repository structure
 
