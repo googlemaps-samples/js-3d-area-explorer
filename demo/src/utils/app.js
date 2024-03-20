@@ -86,7 +86,7 @@ export const updateLocation = async () => {
       poi_types: poiConfig.types
     };
     
-    const docRef = await addDoc(collection(db, "area-explorer-configs"), data); 
+    const docRef = await addDoc(collection(db, "metrics-collection"), data); 
     console.log("Camera settings saved with ID: ", docRef.id);
     console.log("The new coordinates set by the user is lat: "+coordinates.lat+" long: "+coordinates.lng)
 
