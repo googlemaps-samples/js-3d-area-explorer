@@ -25,6 +25,10 @@ shareButton.addEventListener('click', () => {
     .catch((error) => console.log('Error copying URL: ', error));
     const data = {
       timestamp: Timestamp.now(),
+      // Extract and format date:
+      date: Timestamp.now().toDate().toLocaleDateString(), 
+      // Extract and format time:
+      time: Timestamp.now().toDate().toLocaleTimeString('en-US', { hour: '2-digit', minute:'2-digit' }),
       url: currentURL
     };
     
