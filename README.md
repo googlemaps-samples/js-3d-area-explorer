@@ -88,14 +88,14 @@ You can  use your own local webserver to show the 3D Area Explorer app like this
 
 * From the root directory: `npx http-server -p 5500 ./src`
 
-* ### Build & run the Admin App
+### Build & run the Admin App
 
 We also provide a bash script that can be used to run the service in the admin mode. Use the following bash commands from the root directory:
 * `chmod +x build_admin.sh`
 * `./build_admin.sh <YOUR_GMP_API_KEY>`
     * Note: The script can pick up the API_KEY from envrionment variable `API_KEY` as well.
 
-**Manually build the Admin app**
+### Manually build the Admin app
 
 To start the local server as **admin app** do the following:
 
@@ -114,7 +114,7 @@ You need to have docker installed to best work with the **demo-app** locally.
 2. `docker-compose build demo`
 3. `docker-compose up demo`
 
-**Build the Admin App with Docker**
+### Build the Admin App with Docker
 
 There is a second docker compose service `docker-compose up app` which only serves the admin app. For this you may need to update the `config.json` file to include you data.
 
