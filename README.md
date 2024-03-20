@@ -20,13 +20,24 @@ Also, it is always a good idea to add <a href="https://developers.google.com/map
 
 There are no external dependencies to view and work with the 3D Area Explorer solution.
 
+### Quickstart - Hosted Demo
+
+If you want to try with the app without any [local installation](#local-development), try our [hosted demo version](url).
+
+### Quickstart - Demo App
+
 1. [Download](https://github.com/googlemaps-samples/js-3d-area-explorer/archive/refs/heads/main.zip) or `git clone` this repository
 2. Extract the contents of the `src` folder
 3. Adjust the `config.json` to your needs - see [Configuration](#Configuration)
 4. Add your Google Maps Platform API key to [env.exmaple.js](src/env.exmaple.js) and rename the file to `env.js`
 5. Serve the files with a static webserver
 
-If you want to play with the demo (with a configuration UI) without a [local installation](#local-development) you can always use our [hosted version](url).
+### Quickstart - Admin App
+
+1. Clone this repo to your local machine: `git clone ...`
+2. Run the admin setup script: `cd js-3d-area-explorer && chmod +x build_admin.sh`
+3. Start the server: `./build_admin.sh <YOUR_GMP_API_KEY>`
+    * Note: The script can pick up the API_KEY from envrionment variable `API_KEY` as well.
 
 ## Configuration
 
@@ -75,7 +86,14 @@ For the local development you still need the API key for 3D Map Tiles and Google
 
 You can  use your own local webserver to show the 3D Area Explorer app like this:
 
-`npx http-server -p 5500 ./src`
+* From the root directory: `npx http-server -p 5500 ./src`
+
+* ### Build & run the Admin App
+
+We also provide a bash script that can be used to run the service in the admin mode. Use the following bash commands from the root directory:
+* `chmod +x build_admin.sh`
+* `./build_admin.sh <YOUR_GMP_API_KEY>`
+    * Note: The script can pick up the API_KEY from envrionment variable `API_KEY` as well.
 
 **Manually build the Admin app**
 
@@ -88,16 +106,7 @@ To start the local server as **admin app** do the following:
 3. Start the node app by running npx
     * Bash commpand from `src` directory: `http-server -p 5500 ./src`
 
-### Use bash script to build the Admin App
-
-We also provide a bash script that can be used to run the service in the admin mode.
-
-`chmod +x build_admin.sh`
-
-Start it with bash command from the root directory: `./build_admin.sh <YOUR_GMP_API_KEY>`
-The script can pick up the API_KEY from envrionment variable `API_KEY` as well.
-
-### Docker
+### Build the Demo App with Docker
 
 You need to have docker installed to best work with the **demo-app** locally. 
 
@@ -105,13 +114,9 @@ You need to have docker installed to best work with the **demo-app** locally.
 2. `docker-compose build demo`
 3. `docker-compose up demo`
 
-**Admin app with Docker**
+**Build the Admin App with Docker**
 
 There is a second docker compose service `docker-compose up app` which only serves the admin app. For this you may need to update the `config.json` file to include you data.
-
-### IDEs
-
-Most IDEs include some kind of server for static files. Just point it to the `./src` directory and set the right port.
 
 ## Deployment
 
