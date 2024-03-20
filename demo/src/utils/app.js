@@ -25,6 +25,23 @@ import { getNearbyPois } from "../../utils/places.js";
 
 import { getConfigCenterConfig } from "./config.js";
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+import { getFirestore, Timestamp,addDoc, collection } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js'
+
+const firebaseConfig = {
+  apiKey: FIREBASE_API_KEY,
+  authDomain: "d-area-explorer-staging.firebaseapp.com",
+  projectId: "d-area-explorer-staging",
+  storageBucket: "d-area-explorer-staging.appspot.com",
+  messagingSenderId: "862242299614",
+  appId: "1:862242299614:web:815da51faf02d9373f2c4f",
+  measurementId: "G-540GBW9XC8"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app,"metrics-db");
+
 /**
  * Updates the camera of the map with the current configuration values.
  */
@@ -50,6 +67,19 @@ export const updateLocation = async () => {
     const {
       location: { coordinates },
     } = getConfigCenterConfig();
+
+    const data = {
+      timestamp: Timestamp.now(),
+      // Extract and format date:
+      date: Timestamp.now().toDate().toLocaleDateString(), 
+      // Extract and format time:
+      time: Timestamp.now().toDate().toLocaleTimeString('en-US', { hour: '2-digit', minute:'2-digit' }),
+      lat: coordinates.lat,
+      long: coordinates.lng,
+    };
+    
+    const docRef = await addDoc(collection(db, "metrics-collection"), data); 
+    console.log("Camera settings saved with ID: ", docRef.id);
     console.log("The new coordinates set by the user is lat: "+coordinates.lat+" long: "+coordinates.lng)
 
     // move the camera to face the main location's coordinates
