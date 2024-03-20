@@ -67,8 +67,6 @@ export const updateLocation = async () => {
   try {
     const {
       location: { coordinates },
-      camera: cameraConfig, 
-      poi: poiConfig
     } = getConfigCenterConfig();
 
     const data = {
@@ -79,11 +77,6 @@ export const updateLocation = async () => {
       time: Timestamp.now().toDate().toLocaleTimeString('en-US', { hour: '2-digit', minute:'2-digit' }),
       lat: coordinates.lat,
       long: coordinates.lng,
-      camera_speed: cameraConfig.speed,
-      camera_orbit: cameraConfig.orbitType,
-      poi_config: poiConfig.searchRadius,
-      poi_density: poiConfig.density,
-      poi_types: poiConfig.poi.types
     };
     
     const docRef = await addDoc(collection(db, "metrics-collection"), data); 
