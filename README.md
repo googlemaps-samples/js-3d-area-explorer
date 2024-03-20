@@ -81,21 +81,20 @@ You can  use your own local webserver to show the 3D Area Explorer app like this
 
 To start the local server as **admin app** do the following:
 
-Copy the files in demo/src to demo/
-Bash command for above step is `cp -r ../demo/src ./demo`
-
-In index.html, at the end of the file, it has reference to main.js. Change it to demo/sidebar.js.
-Bash command for above `sed -i "s/main.js/demo\/sidebar.js/g" index.html`
-
-And then you can start the node app by running npx `http-server -p 5500 ./src`
+1. Copy the files in demo/src to demo/
+     * Bash command from `/demo` directory: `cp -r ../demo/src ./demo`
+2. In index.html, at the end of the file, it has reference to main.js. Change it to demo/sidebar.js.
+    * Bash command from `/src` directory: `sed -i'.bak' "s/main.js/demo\/sidebar.js/g" index.html`
+3. Start the node app by running npx
+    * Bash commpand from `src` directory: `http-server -p 5500 ./src`
 
 ### Use bash script to build the Admin App
 
-We also provide a bash script that can be used to run the service in  the admin mode.
+We also provide a bash script that can be used to run the service in the admin mode.
 
 `chmod +x build_admin.sh`
 
-Start it like ./build_admin.sh <API_KEY>
+Start it with bash command from the root directory: `./build_admin.sh <YOUR_GMP_API_KEY>`
 The script can pick up the API_KEY from envrionment variable `API_KEY` as well.
 
 ### Docker
