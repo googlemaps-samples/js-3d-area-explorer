@@ -83,7 +83,7 @@ export const updateLocation = async () => {
       camera_orbit: cameraConfig.orbitType,
       poi_config: poiConfig.searchRadius,
       poi_density: poiConfig.density,
-      poi_types: poiConfig.poi.types
+      poi_types: poiConfig.types
     };
     
     const docRef = await addDoc(collection(db, "area-explorer-configs"), data); 
