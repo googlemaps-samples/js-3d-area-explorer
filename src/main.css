@@ -252,6 +252,7 @@ input[type="range"]::-moz-range-track {
 /* ---- layout ---- */
 .main-container {
   --sidebar-width: clamp(350px, 50vw, 400px);
+  padding-bottom: 60px; /* Adjust this value based on the height of your banner */
   display: grid;
   grid-template-columns: 1fr 0;
   grid-template-rows: 100dvh;
