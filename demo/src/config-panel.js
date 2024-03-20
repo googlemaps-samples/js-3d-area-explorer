@@ -130,9 +130,17 @@ const createConfigCenter = async () => {
 
   const architectureCenterLink = document.createElement("a");
   architectureCenterLink.classList.add("architecture-center-link");
-  architectureCenterLink.href = "https://github.com/googlemaps-samples/js-3d-area-explorer"; // TODO: add architecture center link
+  architectureCenterLink.href = "https://developers.google.com/maps/architecture/3d-area-explorer"; 
   architectureCenterLink.target = "_blank";
-  architectureCenterLink.textContent = "Download code from Github";
+  architectureCenterLink.textContent = "Learn about the solution";
+
+  /*
+  const githubLink = document.createElement("a");
+  githubLink.classList.add("architecture-center-link");
+  githubLink.href = "https://github.com/googlemaps-samples/js-3d-area-explorer"; 
+  githubLink.target = "_blank";
+  githubLink.textContent = "Download solution on Github";
+  */
 
   // Append the HTML elements to the container
   summaryHeader.appendChild(gmpLogo);
@@ -145,6 +153,7 @@ const createConfigCenter = async () => {
   configCenterPanel.appendChild(cameraSettingsSection);
   configCenterPanel.appendChild(placeTypesSection);
   configCenterPanel.appendChild(architectureCenterLink);
+  // configCenterPanel.appendChild(githubLink);
 
   mainContainerElement.appendChild(configCenterPanel);
   mainContainerElement.appendChild(downloadButton);
