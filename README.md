@@ -71,21 +71,44 @@ Here are some highlights:
 
 For the local development you still need the API key for 3D Map Tiles and Google Places/Maps requests.
 
+### NodeJS server
+
+You can  use your own local webserver to show the 3D Area Explorer app like this:
+
+`npx http-server -p 5500 ./src`
+
+**Manually build the Admin app**
+
+To start the local server as **admin app** do the following:
+
+Copy the files in demo/src to demo/
+Bash command for above step is `cp -r ../demo/src ./demo`
+
+In index.html, at the end of the file, it has reference to main.js. Change it to demo/sidebar.js.
+Bash command for above `sed -i "s/main.js/demo\/sidebar.js/g" index.html`
+
+And then you can start the node app by running npx `http-server -p 5500 ./src`
+
+### Use bash script to build the Admin App
+
+We also provide a bash script that can be used to run the service in  the admin mode.
+
+`chmod +x build_admin.sh`
+
+Start it like ./build_admin.sh <API_KEY>
+The script can pick up the API_KEY from envrionment variable `API_KEY` as well.
+
 ### Docker
 
-You need to have docker installed to best work with the **demo-app** locally. If you want to play with the demo without a local installation you can always use our [hosted version](url)
+You need to have docker installed to best work with the **demo-app** locally. 
 
 1. Clone the repository
 2. `docker-compose build demo`
 3. `docker-compose up demo`
 
-There is a second docker compose service `docker-compose up app` which only serves the final app. For this you may need to update the `config.json` file to include you data.
+**Admin app with Docker**
 
-### NodeJS server
-
-You can always use your own local webserver to show the 3D Area Explorer app like this:
-
-`npx http-server -p 5500 ./src`
+There is a second docker compose service `docker-compose up app` which only serves the admin app. For this you may need to update the `config.json` file to include you data.
 
 ### IDEs
 
