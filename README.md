@@ -1,32 +1,30 @@
 
 # 3D Area Explorer
 
-
-
 ## Overview
 
 This is the sample app for 3D Area Explorer solution.  This solution leverages the capabilities of Google Maps Platform Photorealistic 3D Tiles and the Places API to create captivating, interactive 3D environments.
 
-This repository consists of two parts. The demo ap and an Admin app which adds a control panel for settings.
+This repository consists of two parts. A Demo App, which is an example customized deployment, and an Admin App, which provides a UI control panel to adjust the solution settings visually like location, camera, and POI types.
 
 ## Installation
 
-You need to create a Google API Key and restrict it to at least these APIs.
-
-- [Map Tiles API](https://console.cloud.google.com/marketplace/product/google/tile.googleapis.com?utm_source=3d_solutions_storytelling)
+You need to create a [Google Maps Platform API Key](https://developers.google.com/maps/documentation/javascript/get-api-key) and restrict it to the following three APIs.
+- <a href="https://console.cloud.google.com/marketplace/product/google/tile.googleapis.com?utm_source=3d_solutions_storytelling" target="_blank">Map Tiles API</a>
+- <a href="https://console.cloud.google.com/marketplace/product/google/places-backend.googleapis.com?utm_source=3d_solutions_storytelling" target="_blank">Places API</a>
 - Maps JavaScript API 
-- [Places API](https://console.cloud.google.com/marketplace/product/google/places-backend.googleapis.com?utm_source=3d_solutions_storytelling)
 
-Also, it is always a good idea to add restrictions for specific websites (i.e. `localhost:5500` for local development).
+Also, it is always a good idea to add <a href="https://developers.google.com/maps/api-security-best-practices#restricting-api-keys" target="_blank">restrictions</a> for specific websites (i.e. `localhost:5500` for local development, or `www.yourdomain.com` for production deployment).
 
 ### 3D Area Explorer
 
 There are no external dependencies to view and work with the 3D Area Explorer solution.
 
-1. download the content of the `src` folder
-2. adjust the `config.json` to your needs (see [Configuration](#Configuration))
-3. add your API key to `env.js` (see [env.exmaple.js](src/env.exmaple.js))
-4. serve the files with a static webserver
+1. [Download](https://github.com/googlemaps-samples/js-3d-area-explorer/archive/refs/heads/main.zip) or `git clone` this repository
+2. Extract the contents of the `src` folder
+3. Adjust the `config.json` to your needs - see [Configuration](#Configuration)
+4. Add your Google Maps Platform API key to [env.exmaple.js](src/env.exmaple.js) and rename the file to `env.js`
+5. Serve the files with a static webserver
 
 If you want to play with the demo (with a configuration UI) without a [local installation](#local-development) you can always use our [hosted version](url).
 
@@ -73,21 +71,44 @@ Here are some highlights:
 
 For the local development you still need the API key for 3D Map Tiles and Google Places/Maps requests.
 
+### NodeJS server
+
+You can  use your own local webserver to show the 3D Area Explorer app like this:
+
+`npx http-server -p 5500 ./src`
+
+**Manually build the Admin app**
+
+To start the local server as **admin app** do the following:
+
+Copy the files in demo/src to demo/
+Bash command for above step is `cp -r ../demo/src ./demo`
+
+In index.html, at the end of the file, it has reference to main.js. Change it to demo/sidebar.js.
+Bash command for above `sed -i "s/main.js/demo\/sidebar.js/g" index.html`
+
+And then you can start the node app by running npx `http-server -p 5500 ./src`
+
+### Use bash script to build the Admin App
+
+We also provide a bash script that can be used to run the service in  the admin mode.
+
+`chmod +x build_admin.sh`
+
+Start it like ./build_admin.sh <API_KEY>
+The script can pick up the API_KEY from envrionment variable `API_KEY` as well.
+
 ### Docker
 
-You need to have docker installed to best work with the **demo-app** locally. If you want to play with the demo without a local installation you can always use our [hosted version](url)
+You need to have docker installed to best work with the **demo-app** locally. 
 
 1. Clone the repository
 2. `docker-compose build demo`
 3. `docker-compose up demo`
 
-There is a second docker compose service `docker-compose up app` which only serves the final app. For this you may need to update the `config.json` file to include you data.
+**Admin app with Docker**
 
-### NodeJS server
-
-You can always use your own local webserver to show the 3D Area Explorer app like this:
-
-`npx http-server -p 5500 ./src`
+There is a second docker compose service `docker-compose up app` which only serves the admin app. For this you may need to update the `config.json` file to include you data.
 
 ### IDEs
 
