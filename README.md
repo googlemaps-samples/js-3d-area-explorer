@@ -1,6 +1,8 @@
 
 # 3D Area Explorer
 
+![thumbnail](./thumbnail-min.png)
+
 ## Overview
 
 This is the sample app for 3D Area Explorer solution.  This solution leverages the capabilities of Google Maps Platform Photorealistic 3D Tiles and the Places API to create captivating, interactive 3D environments.
