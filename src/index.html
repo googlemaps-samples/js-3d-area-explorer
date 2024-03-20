@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="./main.css" />
+    <script type="module" src="./share.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.105/Build/Cesium/Cesium.js"></script>
     <link
       href="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.105/Build/Cesium/Widgets/widgets.css"
-      rel="stylesheet"
-    />
+      rel="stylesheet"/>
     <title>3D Area Explorer</title>
   </head>
   <body>
@@ -47,7 +47,12 @@
             ></label>
             <p>Auto Orbit</p>
           </div>
+          <div class="github-banner">
+            Share your current demo
+            <button class="share-button"  aria-label="Copy Demo URL to Clipboard">Copy demo link  
+            </button>
         </div>
+
         <div class="cesium-attribution-container">
           rendered with
           <a
