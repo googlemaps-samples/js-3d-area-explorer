@@ -336,7 +336,7 @@ a.download-button {
   display: flex;
   align-items: center;
   position: absolute;
-  bottom: 50px;
+  bottom: 100px;
   left: 50%;
   transform: translateX(-50%);
   height: 56px;
