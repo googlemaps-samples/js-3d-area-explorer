@@ -16,7 +16,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app,"metrics-db");
 
-const shareButton = document.querySelector('.share-button');
+const shareButton = document.querySelector('.button');
 
 shareButton.addEventListener('click', () => {
   const currentURL = window.location.href; 
