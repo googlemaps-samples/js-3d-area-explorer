@@ -86,13 +86,15 @@ export const updateLocation = async () => {
       poi_types: poiConfig.types
     };
     
-    const docRef = await addDoc(collection(db, "metrics-collection"), data); 
     console.log("Camera settings saved with ID: ", docRef.id);
     console.log("The new coordinates set by the user is lat: "+coordinates.lat+" long: "+coordinates.lng)
 
     // move the camera to face the main location's coordinates
     await performFlyTo(coordinates);
     updateZoomControl(coordinates);
+
+    // This needs to come last because it is blocking the other function calls
+    const docRef = await addDoc(collection(db, "metrics-collection"), data); 
   } catch (error) {
     console.error(error);
   }
