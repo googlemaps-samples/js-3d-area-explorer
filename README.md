@@ -1,26 +1,26 @@
 
 # 3D Area Explorer
 
-![thumbnail](./thumbnail-min.png)
+![thumbnail](./src/assets/readme_assets/area-explorer-4k.gif)
 
 ## Overview
 
-This is the sample app for 3D Area Explorer solution.  This solution leverages the capabilities of Google Maps Platform Photorealistic 3D Tiles and the Places API to create captivating, interactive 3D environments.
+This is the 3D Area Explorer solution. This solution leverages the capabilities of Google Maps Platform Photorealistic 3D Tiles and the Places API to create captivating, interactive 3D environments.
 
 This repository consists of two parts. A Demo App, which is an example customized deployment, and an Admin App, which provides a UI control panel to adjust the solution settings visually like location, camera, and POI types.
 
 ## Prerequisites
 
-You need to create a [Google Maps Platform API Key](https://developers.google.com/maps/documentation/javascript/get-api-key) and restrict it to the following three APIs.
-- <a href="https://console.cloud.google.com/marketplace/product/google/tile.googleapis.com?utm_source=3d_solutions_storytelling" target="_blank">Map Tiles API</a>
-- <a href="https://console.cloud.google.com/marketplace/product/google/places-backend.googleapis.com?utm_source=3d_solutions_storytelling" target="_blank">Places API</a>
-- Maps JavaScript API 
+You need to create a [Google Maps Platform API Key](https://console.cloud.google.com/google/maps-apis/credentials?utm_source=3d_area_explorer) and restrict it to the following three APIs.
+- <a href="https://console.cloud.google.com/marketplace/product/google/tile.googleapis.com?utm_source=3d_area_explorer" target="_blank">Map Tiles API</a>
+- <a href="https://console.cloud.google.com/marketplace/product/google/places-backend.googleapis.com?utm_source=3d_area_explorer" target="_blank">Places API</a>
+- [Maps JavaScript API](https://console.cloud.google.com/marketplace/product/google/maps-backend.googleapis.com?utm_source=3d_area_explorer)
 
 Also, it is always a good idea to add <a href="https://developers.google.com/maps/api-security-best-practices#restricting-api-keys" target="_blank">restrictions</a> for specific websites (i.e. `localhost:5500` for local development, or `www.yourdomain.com` for production deployment).
 
 ## Hosted admin app
 
-If you want to try with the app without any [local installation](#local-development), try our [hosted demo version](https://js-3d-area-explorer-demo-dev-t6a6o7lkja-uc.a.run.app/).
+If you want to try with the app without any [local installation](#local-development), try our [hosted demo version](https://goo.gle/3d-area-explorer-admin).
 
 ### Quickstart - Static webserver
 
