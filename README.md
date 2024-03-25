@@ -1,4 +1,3 @@
-
 # 3D Area Explorer
 
 ![thumbnail](./src/assets/readme_assets/area-explorer-4k.gif)
@@ -9,20 +8,22 @@ This is the 3D Area Explorer solution. This solution leverages the capabilities 
 
 This repository consists of two parts. A Demo App, which is an example customized deployment, and an Admin App, which provides a UI control panel to adjust the solution settings visually like location, camera, and POI types.
 
+Explore the [solutions landing page](https://developers.google.com/maps/architecture/3d-area-explorer)
+
 ## Prerequisites
 
-You need to create a [Google Maps Platform API Key](https://console.cloud.google.com/google/maps-apis/credentials?utm_source=3d_area_explorer) and restrict it to the following three APIs.
+You need to create a <a href=https://console.cloud.google.com/google/maps-apis/credentials?utm_source=3d_area_explorer" target="_blank">Google Maps Platform API Key</a> and restrict it to the following three APIs.
 - <a href="https://console.cloud.google.com/marketplace/product/google/tile.googleapis.com?utm_source=3d_area_explorer" target="_blank">Map Tiles API</a>
 - <a href="https://console.cloud.google.com/marketplace/product/google/places-backend.googleapis.com?utm_source=3d_area_explorer" target="_blank">Places API</a>
-- [Maps JavaScript API](https://console.cloud.google.com/marketplace/product/google/maps-backend.googleapis.com?utm_source=3d_area_explorer)
+- <a href="https://console.cloud.google.com/marketplace/product/google/maps-backend.googleapis.com?utm_source=3d_area_explorer" target="_blank">Maps JavaScript API</a>
 
 Also, it is always a good idea to add <a href="https://developers.google.com/maps/api-security-best-practices#restricting-api-keys" target="_blank">restrictions</a> for specific websites (i.e. `localhost:5500` for local development, or `www.yourdomain.com` for production deployment).
 
-## Hosted admin app
+## Hosted Admin app
 
-If you want to try with the app without any [local installation](#local-development), try our [hosted demo version](https://goo.gle/3d-area-explorer-admin).
+If you want to try the app without any [local installation](#local-development), try our [hosted demo version](https://goo.gle/3d-area-explorer-admin).
 
-### Quickstart - Static webserver
+### Quickstart - static webserver
 
 1. [Download](https://github.com/googlemaps-samples/js-3d-area-explorer/archive/refs/heads/main.zip) or `git clone` this repository
 2. Extract the contents of the `src` folder
@@ -30,7 +31,7 @@ If you want to try with the app without any [local installation](#local-developm
 4. Add your Google Maps Platform API key to [env.exmaple.js](src/env.exmaple.js) and rename the file to `env.js`
 5. Serve the files with a static webserver
 
-### Quickstart: Start Admin App using build in bash script
+### Quickstart: Start Admin app using build in bash script
 
 1. Clone this repo to your local machine: `git clone ...`
 2. Run the admin setup script: `cd js-3d-area-explorer && chmod +x build_admin.sh`
@@ -57,7 +58,7 @@ You need to have docker installed to best work with the **demo-app** locally.
 2. `docker-compose build demo`
 3. `docker-compose up demo`
 
-### Build the Admin App with Docker
+### Build the Admin app with Docker
 
 There is a second docker compose service `docker-compose up app` which only serves the admin app. For this you may need to update the `config.json` file to include you data.
 
@@ -109,11 +110,9 @@ Here are some highlights:
 
 - **START_COORDINATES**: To change the very initial start position for the fly to your neihgbourhood
 - **CAMERA_OFFSET**: The camera position. Used for the initial setting for the neighbourhood but also for specific markers in `/src/utils/create-marker.js`
-  - **heading**: refers to the rotation offset (basically the compass direction)
-  - **pitch**: refers to the tilt of the camera (negative to look down)
-  - **range**: refers to the distance from the point the camera is looking at
-
-
+- **heading**: refers to the rotation offset (basically the compass direction)
+- **pitch**: refers to the tilt of the camera (negative to look down)
+- **range**: refers to the distance from the point the camera is looking at
 
 ## Repository structure
 
