@@ -1,10 +1,10 @@
-# 3D Area Explorer
+# 3D Area Explorer solution
 
 ![thumbnail](./src/assets/readme_assets/area-explorer-4k.gif)
 
 ## Overview
 
-This is the 3D Area Explorer solution. This solution leverages the capabilities of Google Maps Platform Photorealistic 3D Tiles and the Places API to create captivating, interactive 3D environments.
+This is the 3D Area Explorer solution. This solution leverages the capabilities of Google Maps Platform [Photorealistic 3D Tiles](https://developers.google.com/maps/documentation/tile/3d-tiles-overview) and the [Places API](https://developers.google.com/maps/documentation/places/web-service) to create captivating, interactive 3D environments.
 
 This repository consists of two parts. A Demo App, which is an example customized deployment, and an Admin App, which provides a UI control panel to adjust the solution settings visually like location, camera, and POI types.
 
@@ -52,7 +52,7 @@ For the local development you still need the API key for 3D Map Tiles and Google
 
 ### Build the Demo App with Docker
 
-You need to have docker installed to best work with the **demo-app** locally. 
+You need to have docker installed to best work with the **demo-app** locally.
 
 1. Clone the repository
 2. `docker-compose build demo`
@@ -63,7 +63,7 @@ You need to have docker installed to best work with the **demo-app** locally.
 There is a second docker compose service `docker-compose up app` which only serves the admin app. For this you may need to update the `config.json` file to include you data.
 
 ### Manually build the Admin app
-Note: You should follow these instructions if you want to create your own admin app in a 
+Note: You should follow these instructions if you want to create your own admin app in a
 different language other than bash.
 
 To start the local server as **admin app** do the following:
@@ -123,15 +123,13 @@ The app part of the repository is self contained and can be used as is (after up
 The demo folder contains additional code to render a configuration UI to play with the settings in the `config.json`. The code is added to the deployment by way of the `/demo/Dockerfile`.
 
 ## Terms of Service
-This library uses Google Maps Platform services, and any use of Google Maps Platform is subject to the Terms of Service.
+This solution uses Google Maps Platform services. Use of Google Maps Platform services through this solution is subject to the [Google Maps Platform Terms of Service](https://cloud.google.com/maps-platform/terms).
 
-For clarity, this library, and each underlying component, is not a Google Maps Platform Core Service.
+This solution is not a Google Maps Platform Core Service. Therefore, the Google Maps Platform Terms of Service (e.g. Technical Support Services, Service Level Agreements, and Deprecation Policy) do not apply to the code in this solution.
 
 ## Support
-This library is offered via an open source license. It is not governed by the Google Maps Platform Support Technical Support Services Guidelines, the SLA, or the Deprecation Policy (however, any Google Maps Platform services used by the library remain subject to the Google Maps Platform Terms of Service).
-
-This library adheres to semantic versioning to indicate when backwards-incompatible changes are introduced. Accordingly, while the library is in version 0.x, backwards-incompatible changes may be introduced at any time.
+This solution is offered via an open source license. It is not governed by the Google Maps Platform Support Technical Support Services Guidelines, the SLA, or the Deprecation Policy (however, any Google Maps Platform services used by the solution remain subject to the Google Maps Platform Terms of Service).
 
 If you find a bug, or have a feature request, please file an issue on GitHub. If you would like to get answers to technical questions from other Google Maps Platform developers, ask through one of our developer community channels. If you'd like to contribute, please check the Contributing guide.
 
-You can also discuss this library on our Discord server.
+You can also discuss this solution on our Discord server.
