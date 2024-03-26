@@ -12,7 +12,7 @@ Explore the [solutions landing page](https://developers.google.com/maps/architec
 
 ## Prerequisites
 
-You need to create a <a href="https://console.cloud.google.com/google/maps-apis/credentials?utm_source=3d_area_explorer" target="_blank">Google Maps Platform API Key</a> and restrict it to the following three APIs.
+You need to create a <a href="https://console.cloud.google.com/google/maps-apis/credentials?utm_source=3d_area_explorer" target="_blank">Google Maps Platform API Key</a> and enable the following three APIs:
 - <a href="https://console.cloud.google.com/marketplace/product/google/tile.googleapis.com?utm_source=3d_area_explorer" target="_blank">Map Tiles API</a>
 - <a href="https://console.cloud.google.com/marketplace/product/google/places-backend.googleapis.com?utm_source=3d_area_explorer" target="_blank">Places API</a>
 - <a href="https://console.cloud.google.com/marketplace/product/google/maps-backend.googleapis.com?utm_source=3d_area_explorer" target="_blank">Maps JavaScript API</a>
